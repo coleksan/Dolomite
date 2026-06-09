@@ -167,6 +167,88 @@ nav.tabs button svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-
 nav.tabs button.active{color:var(--accent);background:var(--accent-soft)}
 .note{font-size:13px;color:var(--faint);margin:8px 2px}
 </style>
+<style>
+/* —— mobile polish pass —— */
+html{-webkit-text-size-adjust:100%}
+button,.chip,.btn,nav.tabs,summary,label.check{touch-action:manipulation}
+.wrap{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+.brand h1{letter-spacing:-.012em}
+h2{font-size:12px;letter-spacing:.12em;margin:26px 0 8px}
+.kicker{font-size:11.5px;letter-spacing:.14em}
+.day-title{font-size:clamp(20px,5.8vw,23px);letter-spacing:-.015em}
+.stat .l,.dnum .dw{letter-spacing:.1em}
+.wx-strip .hdr{letter-spacing:.09em}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(102px,1fr))}
+.stat{min-width:0}
+.stat .v{font-size:13.5px;line-height:1.35}
+.banner{font-size:14px;line-height:1.5}
+.dbody p{line-height:1.55}
+label.check{min-height:50px;align-items:center}
+.chips{scroll-snap-type:x proximity}
+.chip{scroll-snap-align:start}
+a.tel .nm{min-width:0}
+a.tel .nm,a.tel .nm small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+nav.tabs{padding:5px 4px calc(5px + env(safe-area-inset-bottom))}
+nav.tabs button{font-size:9.5px;letter-spacing:.04em;gap:2.5px;min-height:56px;padding:7px 0 5px}
+nav.tabs button svg{width:22px;height:22px}
+@media (max-width:374px){
+  nav.tabs button{font-size:8.5px;letter-spacing:.01em}
+  .wrap{padding-left:max(13px,env(safe-area-inset-left));padding-right:max(13px,env(safe-area-inset-right))}
+  .card{padding:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+
+/* —— map —— */
+.map-card{padding:10px 10px 12px}
+.map-wrap{position:relative}
+#mapbox{border-radius:12px;overflow:hidden;background:#0a0e13;border:1px solid var(--line)}
+#mapbox svg{display:block;width:100%;height:clamp(260px,46vh,430px);touch-action:none;cursor:grab}
+.map-ctrl{position:absolute;right:8px;top:8px;display:flex;flex-direction:column;gap:7px}
+.map-ctrl button{width:42px;height:42px;border-radius:12px;background:rgba(17,23,30,.92);border:1px solid var(--line);color:var(--text);font-size:19px;font-weight:600;font-family:inherit;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);cursor:pointer}
+#mapbox .road{stroke:#243040;stroke-width:1.5px;fill:none}
+#mapbox .route{stroke:rgba(143,208,198,.5);stroke-width:2px;stroke-dasharray:6 5;fill:none}
+#mapbox .peak{fill:#2c3947}
+#mapbox .peaklbl{fill:#4a5a6a;font-style:italic}
+.mk{cursor:pointer}
+.mk .hit{fill:transparent;pointer-events:all}
+.mk .dot{fill:#26323e;stroke:#7e8da0;stroke-width:1.5px}
+.mk.stay .dot{fill:var(--accent);stroke:#0a2521}
+.mk.poi .dot{fill:#1a222b;stroke:#5d6c7b}
+.mk-rec .dot{fill:var(--warn);stroke:#0a0e13}
+.mk text{fill:#dfe7ee;font-weight:600;paint-order:stroke;stroke:#0a0e13;stroke-linejoin:round}
+.mk.poi text{fill:#9fb0c0}
+.mk-rec text{fill:#ecd9b8}
+.mk.sel .dot{stroke:#fff;stroke-width:2.5px}
+.ring{stroke:var(--accent);stroke-width:2px;fill:none;animation:ringpulse 1.8s ease-in-out infinite}
+@keyframes ringpulse{0%,100%{opacity:.9}50%{opacity:.2}}
+#mapbox svg:not(.zoomed) .mk.poi text,#mapbox svg:not(.zoomed) .mk-rec text,#mapbox svg:not(.zoomed) .peaklbl{display:none}
+.maplegend{display:flex;gap:13px;flex-wrap:wrap;margin:10px 4px 0;font-size:12px;color:var(--dim)}
+.lg{display:inline-block;width:10px;height:10px;border-radius:99px;margin-right:5px;vertical-align:-1px}
+.lg.stay{background:var(--accent)}
+.lg.poi{background:#1a222b;border:1.5px solid #5d6c7b}
+.lg.rec{background:var(--warn)}
+.lg.rt{width:16px;height:2px;border-radius:0;background:repeating-linear-gradient(90deg,var(--accent) 0 4px,transparent 4px 7px);vertical-align:2px}
+
+/* —— nearby recs —— */
+.rechead{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:700;margin:14px 0 2px}
+.rec{display:flex;gap:11px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.rec:last-of-type{border-bottom:0}
+.rec .tx{flex:1;min-width:0}
+.rec .tx b{font-size:14.5px;font-weight:650}
+.rec .tx span{display:block;font-size:13px;color:var(--dim);line-height:1.45;margin-top:1px}
+.rec .act{display:flex;gap:6px;flex:none}
+.ib{width:42px;height:42px;border-radius:11px;background:var(--bg);border:1px solid var(--line);color:var(--accent);font-size:16px;display:grid;place-items:center;text-decoration:none;font-family:inherit;cursor:pointer}
+.tz{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+.tz .hdr{display:flex;justify-content:space-between;font-size:12px;color:var(--faint);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.tz .row{display:flex;gap:10px;align-items:center;padding:6px 0;font-size:14.5px;min-width:0}
+.tz .row .e{flex:none}
+.tz .row .cat{color:var(--faint);font-size:13px}
+.btnrow{display:flex;gap:8px;margin-top:14px}
+.btnrow .btn{flex:1;margin-top:0}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -183,6 +265,25 @@ nav.tabs button.active{color:var(--accent);background:var(--accent-soft)}
   <section id="view-itinerary" class="view">
     <h2>Itinerary — 9 days</h2>
     <div id="itin"></div>
+  </section>
+
+  <section id="view-map" class="view">
+    <h2>Trip map — stays &amp; route</h2>
+    <div class="card map-card">
+      <div class="map-wrap">
+        <div id="mapbox"></div>
+        <div class="map-ctrl">
+          <button id="mz-in" aria-label="Zoom in">+</button>
+          <button id="mz-out" aria-label="Zoom out">−</button>
+          <button id="mz-fit" aria-label="Reset view">⌖</button>
+        </div>
+      </div>
+      <p class="maplegend"><span><i class="lg stay"></i>stay</span><span><i class="lg poi"></i>key point</span><span><i class="lg rec"></i>day picks</span><span><i class="lg rt"></i>route</span></p>
+    </div>
+    <div id="map-detail"></div>
+    <h2 id="rec-day-label">Nearby</h2>
+    <div class="chips" id="map-chips"></div>
+    <div id="rec-list"></div>
   </section>
 
   <section id="view-weather" class="view">
@@ -250,6 +351,9 @@ nav.tabs button.active{color:var(--accent);background:var(--accent-soft)}
   <button data-view="itinerary" aria-label="Itinerary">
     <svg viewBox="0 0 24 24"><path d="M8 4h13M8 12h13M8 20h13"/><circle cx="3.5" cy="4" r="1.4"/><circle cx="3.5" cy="12" r="1.4"/><circle cx="3.5" cy="20" r="1.4"/></svg>
     Itinerary</button>
+  <button data-view="map" aria-label="Map">
+    <svg viewBox="0 0 24 24"><path d="M12 21s-6.5-5.4-6.5-10.2A6.5 6.5 0 0 1 12 4.2a6.5 6.5 0 0 1 6.5 6.6C18.5 15.6 12 21 12 21z"/><circle cx="12" cy="10.7" r="2.3"/></svg>
+    Map</button>
   <button data-view="weather" aria-label="Weather">
     <svg viewBox="0 0 24 24"><path d="M7 17a4.5 4.5 0 1 1 .8-8.9A6 6 0 0 1 19 9.5 3.8 3.8 0 0 1 18 17H7z"/></svg>
     Weather</button>
@@ -411,6 +515,7 @@ function show(view){
   navBtns.forEach(b => b.classList.toggle("active", b.dataset.view === view));
   window.scrollTo({top:0});
   if (view === "weather") renderWeatherView();
+  if (view === "map") renderMapView();
 }
 navBtns.forEach(b => b.addEventListener("click", () => show(b.dataset.view)));
 
@@ -431,7 +536,11 @@ function dayCardHTML(day, i, isLive){
       <div class="hdr"><span>Weather · ${LOCS[day.loc].name}</span><span id="t-wx-status"></span></div>
       <div id="t-wx"><div class="wx-fallback">Checking live forecast…</div></div>
     </div>
-    <button class="btn block ghost" id="open-day">Full day details →</button>
+    ${nearbyTeaser(i)}
+    <div class="btnrow">
+      <button class="btn ghost" id="open-day">Day details</button>
+      <button class="btn" data-go="map" data-mapday="${i}">Map · nearby</button>
+    </div>
   </div>
   <div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:10px">
     <span style="font-size:14px;color:var(--dim)">Tonight: <b style="color:var(--text)">${day.stay}</b></span>
@@ -469,7 +578,10 @@ function renderToday(){
     const det = document.querySelectorAll("#itin details")[idx];
     if (det){ det.open = true; det.scrollIntoView({behavior:"smooth", block:"start"}); }
   });
-  el.querySelectorAll("[data-go]").forEach(b => b.addEventListener("click", () => show(b.dataset.go)));
+  el.querySelectorAll("[data-go]").forEach(b => b.addEventListener("click", () => {
+    if (b.dataset.mapday != null) mapDay = +b.dataset.mapday;
+    show(b.dataset.go);
+  }));
   fillTodayWeather(day);
 }
 
@@ -488,8 +600,13 @@ function renderItinerary(){
       ${day.warnings.map(w=>`<div class="banner warn"><div class="ic">⚠️</div><div>${w}</div></div>`).join("")}
       ${day.plan.map(p=>`<p class="plan">${p}</p>`).join("")}
       <div class="tagrow"><span class="tag stay">🛏 ${day.stay}</span><span class="tag">📍 ${LOCS[day.loc].name}</span></div>
+      ${recsForDay(i).length ? `<button class="btn sm ghost" style="margin-top:12px" data-mapday="${i}">📍 Nearby picks &amp; map</button>` : ""}
     </div>
   </details>`).join("");
+  document.querySelectorAll("#itin [data-mapday]").forEach(b => b.addEventListener("click", () => {
+    mapDay = +b.dataset.mapday;
+    show("map");
+  }));
 }
 
 /* ---------- CHECKLIST ---------- */
@@ -621,6 +738,255 @@ function renderWeatherView(force){
   });
 }
 $("#wx-refresh").addEventListener("click", () => renderWeatherView(true));
+
+/* ---------- MAP + NEARBY ---------- */
+const STAYS = [
+ {id:"s1", n:"B&B Hotel Passo Tre Croci", lbl:"Tre Croci", ll:[46.5793,12.1869], nights:[17,18], sub:"Nights of Jun 17–18", note:"Sorapis trailhead at the front door.", q:"B&B Hotel Passo Tre Croci"},
+ {id:"s2", n:"Rifugio Scoiattoli", lbl:"Scoiattoli", ll:[46.5189,12.0386], nights:[19], sub:"Night of Jun 19 · Camera 5", note:"€165 CASH on arrival · liner required · sunset up at Nuvolau.", q:"Rifugio Scoiattoli"},
+ {id:"s3", n:"Hotel Arkadia", lbl:"Arkadia", ll:[46.5506,11.8736], nights:[20,21], sub:"Nights of Jun 20–21 · Corvara", note:"Adults-only wellness · panorama pool · half board.", q:"Hotel Arkadia Corvara"},
+ {id:"s4", n:"Alpenroyal Grand Hotel", lbl:"Alpenroyal", anch:"end", ll:[46.5547,11.7600], nights:[22,23], sub:"Nights of Jun 22–23 · Selva", note:"5★ · half board · conf. 36408986.", q:"Alpenroyal Grand Hotel Selva di Val Gardena"}
+];
+const POIS = [
+ {id:"p1", n:"Cortina d'Ampezzo", lbl:"Cortina", ll:[46.5405,12.1357], sub:"Town base", note:"Corso Italia, shops, cash machines for the Scoiattoli envelope.", q:"Cortina d'Ampezzo"},
+ {id:"p2", n:"Rif. Auronzo — Tre Cime gate", lbl:"Tre Cime gate", ll:[46.6128,12.2953], sub:"Trailhead · toll road", note:"Gate 08:30–20:30 · ~€43 · plate must be pre-registered (conf. R26019062).", q:"Rifugio Auronzo"},
+ {id:"p3", n:"Seceda gondola, Ortisei", lbl:"Ortisei", ll:[46.5759,11.6714], sub:"Lift base", note:"Buy tickets online to skip the line.", q:"Seceda cable car Ortisei"}
+];
+const RECS = [
+ {a:"cortina", c:"eat", n:"El Brite de Larieto", d:"Farm agriturismo in the larches on the Tre Croci road — own dairy, canederli, charcuterie. Book.", ll:[46.552,12.168], q:"El Brite de Larieto Cortina"},
+ {a:"cortina", c:"eat", n:"Baita Fraina", d:"Old-school Ampezzo kitchen and a serious wine cellar just above town.", q:"Baita Fraina Cortina d'Ampezzo"},
+ {a:"cortina", c:"eat", n:"Ristorante Tivoli", d:"The Michelin splurge on the Pocol side — if you fancy one big dinner.", q:"Ristorante Tivoli Cortina"},
+ {a:"cortina", c:"shop", n:"La Cooperativa di Cortina", d:"Historic 1893 department store on Corso Italia — gear floor for anything you forgot.", ll:[46.5374,12.1387], q:"La Cooperativa di Cortina"},
+ {a:"cortina", c:"see", n:"Corso Italia passeggiata", d:"Pedestrian core and the campanile at dusk, gelato in hand.", q:"Corso Italia Cortina d'Ampezzo"},
+ {a:"cortina", c:"see", n:"Museo Rimoldi", d:"Modern-art stash (De Chirico, Morandi) — the rainy-hour card.", q:"Museo d'Arte Moderna Mario Rimoldi Cortina"},
+ {a:"misurina", c:"hike", n:"Lago di Misurina shore loop", d:"40 flat minutes round the postcard lake, 10 min drive from the hotel.", ll:[46.585,12.254], q:"Lago di Misurina"},
+ {a:"misurina", c:"see", n:"Lago d'Antorno", d:"Pull-off above Misurina — Tre Cime framed over the water.", ll:[46.597,12.262], q:"Lago d'Antorno"},
+ {a:"misurina", c:"eat", n:"Rifugio Vandelli", d:"Lunch at the Sorapis lake itself — your mid-loop refuel.", ll:[46.558,12.215], q:"Rifugio Vandelli"},
+ {a:"cinquetorri", c:"eat", n:"Rifugio Averau", d:"Reputedly the best rifugio kitchen in the Dolomites — reserve for lunch.", ll:[46.5125,12.0247], q:"Rifugio Averau"},
+ {a:"cinquetorri", c:"see", n:"WWI open-air museum", d:"Restored trenches threaded around the Torri — free, 45-min wander from the hut.", ll:[46.516,12.043], q:"Museo Grande Guerra Cinque Torri"},
+ {a:"cinquetorri", c:"see", n:"Nuvolau sunset ledges", d:"Your evening plan — 360° from the 1883 hut. Headlamp for the walk down.", ll:[46.5096,12.0297], q:"Rifugio Nuvolau"},
+ {a:"cinquetorri", c:"see", n:"Lagazuoi + WWI tunnels", d:"Cable car at Passo Falzarego — worth an early stop on tomorrow's drive.", ll:[46.5187,11.9905], q:"Lagazuoi cable car Passo Falzarego"},
+ {a:"trecime", c:"eat", n:"Rifugio Lavaredo", d:"First hut past the chapel — far better value than Auronzo.", ll:[46.6135,12.322], q:"Rifugio Lavaredo"},
+ {a:"trecime", c:"eat", n:"Malga Langalm", d:"Rustic dairy on the quiet north half of the loop — cheese boards, buttermilk.", ll:[46.622,12.287], q:"Malga Langalm Tre Cime"},
+ {a:"trecime", c:"see", n:"Cappella degli Alpini", d:"Mountaineers' chapel 10 min along the main track from Auronzo.", ll:[46.6123,12.303], q:"Cappella degli Alpini Tre Cime"},
+ {a:"corvara", c:"eat", n:"Maso Runch", d:"1712 farmhouse in Badia — fixed Ladin menu (~€51): cajinci, ribs, strudel. Book: +39 0471 839796.", ll:[46.607,11.903], q:"Maso Runch Badia"},
+ {a:"corvara", c:"eat", n:"Rifugio Col Alt", d:"Gondola from Corvara square straight to a 2,000 m lunch terrace.", ll:[46.552,11.8845], q:"Rifugio Col Alt Corvara"},
+ {a:"corvara", c:"hike", n:"Cascate del Pisciadù", d:"Easy 1.5 h waterfall out-and-back from Colfosco — perfect recovery legs.", ll:[46.555,11.839], q:"Cascate del Pisciadù Colfosco"},
+ {a:"corvara", c:"see", n:"Santuario La Crusc", d:"Pilgrim church under the Sas dla Crusc wall — lifts from Badia village.", ll:[46.616,11.920], q:"Santuario La Crusc Badia"},
+ {a:"corvara", c:"shop", n:"Corvara delis", d:"Speck, mountain cheese and schüttelbrot for trail lunches.", q:"alimentari Corvara in Badia"},
+ {a:"corvara", c:"see", n:"Passo Gardena at dusk", d:"15 min up from Corvara — golden hour on the Sella towers.", ll:[46.5526,11.8095], q:"Passo Gardena"},
+ {a:"valgardena", c:"eat", n:"Baita Sofie", d:"2,410 m terrace on the Seceda ridge — South Tyrolean plates, celebrated tiramisu.", ll:[46.596,11.736], q:"Baita Sofie Seceda"},
+ {a:"valgardena", c:"see", n:"Via Rezia, Ortisei", d:"Pedestrian core — woodcarving ateliers and the Museum Gherdëina.", ll:[46.5759,11.6714], q:"Via Rezia Ortisei"},
+ {a:"valgardena", c:"see", n:"San Giacomo church", d:"Oldest church in the valley — short forest walk above Ortisei.", ll:[46.578,11.690], q:"Chiesa di San Giacomo Ortisei"},
+ {a:"valgardena", c:"hike", n:"Resciesa funicular meadows", d:"Gentle big-view plateau if the legs are done — funicular from Ortisei.", ll:[46.589,11.668], q:"Resciesa funicular Ortisei"},
+ {a:"valgardena", c:"hike", n:"Vallunga valley floor", d:"Your mercy option from Selva — flat, glacial, gorgeous.", ll:[46.561,11.776], q:"Vallunga Selva di Val Gardena"},
+ {a:"valgardena", c:"shop", n:"UNIKA woodcarvers", d:"Val Gardena's signature craft — ateliers and the UNIKA gallery around Ortisei.", q:"UNIKA Val Gardena woodcarving"}
+];
+RECS.forEach((r,i) => r.id = "r" + i);
+const MARKS = {};
+[...STAYS, ...POIS, ...RECS].forEach(m => MARKS[m.id] = m);
+const DAY_AREAS = [[], ["cortina"], ["misurina","cortina"], ["cinquetorri"], ["trecime","corvara"], ["corvara"], ["valgardena"], ["valgardena"], []];
+const CATS = {eat:["🍽","Eat & drink"], see:["📷","See"], shop:["🛍","Shop"], hike:["🥾","Easy legs"]};
+const recsForDay = i => DAY_AREAS[i].flatMap(a => RECS.filter(r => r.a === a));
+
+function nearbyTeaser(i){
+  const recs = recsForDay(i);
+  if (!recs.length) return "";
+  return `<div class="tz"><div class="hdr"><span>Nearby picks</span><span>${recs.length} curated</span></div>` +
+    recs.slice(0,3).map(r => `<div class="row"><span class="e">${CATS[r.c][0]}</span><span><b>${r.n}</b> <span class="cat">· ${CATS[r.c][1]}</span></span></div>`).join("") + `</div>`;
+}
+
+/* projection: simple equirectangular over the trip box */
+const MAPB = {lonMin:11.63, lonMax:12.345, latMin:46.465, latMax:46.66};
+const KX = Math.cos(46.56 * Math.PI / 180);
+const MAP_W = 1000, SC = MAP_W / ((MAPB.lonMax - MAPB.lonMin) * KX);
+const MAP_H = Math.round((MAPB.latMax - MAPB.latMin) * SC);
+const mx = lon => +((lon - MAPB.lonMin) * KX * SC).toFixed(1);
+const my = lat => +((MAPB.latMax - lat) * SC).toFixed(1);
+const ROADS = [
+ [[46.5405,12.1357],[46.5793,12.1869],[46.585,12.254],[46.597,12.262],[46.6128,12.2953]],
+ [[46.5405,12.1357],[46.522,12.094],[46.5187,11.9905],[46.54,11.93],[46.5506,11.8736]],
+ [[46.5506,11.8736],[46.5526,11.8095],[46.5547,11.76],[46.5759,11.6714]],
+ [[46.522,12.094],[46.4836,12.0565]]
+];
+const ROUTE = [[46.5405,12.1357],[46.5793,12.1869],[46.5189,12.0386],[46.6128,12.2953],[46.5506,11.8736],[46.5547,11.76]];
+const PEAKS = [[46.554,12.07,"Tofane"],[46.548,12.222,"Sorapis"],[46.618,12.302,"Tre Cime"],[46.508,11.84,"Sella"],[46.612,11.755,"Odle"],[46.494,12.085,"Croda da Lago"]];
+
+let svg = null, mapbox = null, mapBuilt = false, mapDay = null, moved = 0;
+let mv = {x:0, y:0, w:MAP_W};
+const mvh = () => mv.w * MAP_H / MAP_W;
+function curDayIdx(){ const i = tripIndex(new Date()); return i >= 0 ? i : (previewIdx ?? 0); }
+
+function applyView(){
+  const h = mvh();
+  const cx = Math.min(Math.max(mv.x + mv.w/2, 0), MAP_W);
+  const cy = Math.min(Math.max(mv.y + h/2, 0), MAP_H);
+  mv.x = cx - mv.w/2; mv.y = cy - h/2;
+  svg.setAttribute("viewBox", mv.x + " " + mv.y + " " + mv.w + " " + h);
+  scaleUI();
+}
+function scaleUI(){
+  const cw = mapbox.clientWidth || 360;
+  const u = mv.w / cw;
+  svg.classList.toggle("zoomed", mv.w < 520);
+  svg.querySelectorAll("[data-r]").forEach(c => c.setAttribute("r", c.dataset.r * u));
+  svg.querySelectorAll("[data-fs]").forEach(t => {
+    t.setAttribute("font-size", t.dataset.fs * u);
+    t.setAttribute("stroke-width", t.dataset.fs * u * 0.26);
+    if (t.dataset.cx){
+      const dx = (+t.dataset.dx || 0) * u * (t.dataset.anch === "end" ? -1 : 1);
+      t.setAttribute("x", +t.dataset.cx + dx);
+      t.setAttribute("y", +t.dataset.cy + (+t.dataset.dy || 4) * u);
+    }
+  });
+}
+function zoomAt(f, ux, uy){
+  const w2 = Math.min(Math.max(mv.w * f, 120), 1150);
+  const k = w2 / mv.w;
+  mv.x = ux - (ux - mv.x) * k;
+  mv.y = uy - (uy - mv.y) * k;
+  mv.w = w2; applyView();
+}
+function toUnits(cx, cy){
+  const r = svg.getBoundingClientRect();
+  const upp = mv.w / r.width;
+  const lb = (r.height * upp - mvh()) / 2;
+  return [mv.x + (cx - r.left) * upp, mv.y - lb + (cy - r.top) * upp];
+}
+function buildMap(){
+  mapbox = $("#mapbox");
+  const poly = pts => pts.map(p => mx(p[1]) + "," + my(p[0])).join(" ");
+  const mark = (m, cls, r, fs) => {
+    const x = mx(m.ll[1]), y = my(m.ll[0]);
+    const anch = m.anch === "end" ? ' text-anchor="end" data-anch="end"' : "";
+    return `<g class="mk ${cls}" data-id="${m.id}"><circle class="hit" data-r="17" cx="${x}" cy="${y}"/><circle class="dot" vector-effect="non-scaling-stroke" data-r="${r}" cx="${x}" cy="${y}"/><text data-fs="${fs}" data-cx="${x}" data-cy="${y}" data-dx="13"${anch}>${m.lbl || m.n}</text></g>`;
+  };
+  mapbox.innerHTML = `<svg viewBox="0 0 ${MAP_W} ${MAP_H}" preserveAspectRatio="xMidYMid meet" aria-label="Trip map">
+    <rect x="-2000" y="-2000" width="5000" height="5000" fill="#0a0e13"/>
+    ${ROADS.map(rd => `<polyline class="road" vector-effect="non-scaling-stroke" points="${poly(rd)}"/>`).join("")}
+    <polyline class="route" vector-effect="non-scaling-stroke" points="${poly(ROUTE)}"/>
+    ${PEAKS.map(p => `<text class="peak" data-fs="11" data-cx="${mx(p[1])}" data-cy="${my(p[0])}" data-dy="4" text-anchor="middle">▲</text><text class="peaklbl" data-fs="8.5" data-cx="${mx(p[1])}" data-cy="${my(p[0])}" data-dy="16" text-anchor="middle">${p[2]}</text>`).join("")}
+    <g id="lrec"></g><g id="lring"></g>
+    ${POIS.map(m => mark(m, "poi", 5.5, 9.5)).join("")}
+    ${STAYS.map(m => mark(m, "stay", 7.5, 10.5)).join("")}
+  </svg>`;
+  svg = mapbox.querySelector("svg");
+  const ptrs = new Map();
+  let panStart = null, pinch0 = null;
+  svg.addEventListener("pointerdown", e => {
+    svg.setPointerCapture(e.pointerId);
+    ptrs.set(e.pointerId, e);
+    if (ptrs.size === 1){ panStart = {x:mv.x, y:mv.y, cx:e.clientX, cy:e.clientY}; moved = 0; }
+    else if (ptrs.size === 2){
+      const [a,b] = [...ptrs.values()];
+      pinch0 = {d: Math.hypot(a.clientX-b.clientX, a.clientY-b.clientY) || 1, w: mv.w,
+                mid: toUnits((a.clientX+b.clientX)/2, (a.clientY+b.clientY)/2)};
+      panStart = null;
+    }
+  });
+  svg.addEventListener("pointermove", e => {
+    if (!ptrs.has(e.pointerId)) return;
+    ptrs.set(e.pointerId, e);
+    const r = svg.getBoundingClientRect();
+    if (ptrs.size === 1 && panStart){
+      const upp = mv.w / r.width;
+      const dx = e.clientX - panStart.cx, dy = e.clientY - panStart.cy;
+      moved = Math.max(moved, Math.abs(dx) + Math.abs(dy));
+      mv.x = panStart.x - dx*upp; mv.y = panStart.y - dy*upp; applyView();
+    } else if (ptrs.size === 2 && pinch0){
+      moved = 99;
+      const [a,b] = [...ptrs.values()];
+      const d = Math.hypot(a.clientX-b.clientX, a.clientY-b.clientY) || 1;
+      mv.w = Math.min(Math.max(pinch0.w * pinch0.d / d, 120), 1150);
+      const upp = mv.w / r.width;
+      const lb = (r.height * upp - mvh()) / 2;
+      const mcx = (a.clientX+b.clientX)/2, mcy = (a.clientY+b.clientY)/2;
+      mv.x = pinch0.mid[0] - (mcx - r.left) * upp;
+      mv.y = pinch0.mid[1] + lb - (mcy - r.top) * upp;
+      applyView();
+    }
+  });
+  const endPtr = e => {
+    ptrs.delete(e.pointerId);
+    if (ptrs.size === 1){ const p = [...ptrs.values()][0]; panStart = {x:mv.x, y:mv.y, cx:p.clientX, cy:p.clientY}; pinch0 = null; }
+    else if (!ptrs.size){ panStart = null; pinch0 = null; }
+  };
+  svg.addEventListener("pointerup", endPtr);
+  svg.addEventListener("pointercancel", endPtr);
+  svg.addEventListener("click", e => {
+    if (moved > 8) return;
+    const g = e.target.closest(".mk");
+    if (g) showDetail(g.dataset.id);
+  });
+  $("#mz-in").addEventListener("click", () => zoomAt(0.62, mv.x + mv.w/2, mv.y + mvh()/2));
+  $("#mz-out").addEventListener("click", () => zoomAt(1.61, mv.x + mv.w/2, mv.y + mvh()/2));
+  $("#mz-fit").addEventListener("click", () => { mv = {x:0, y:0, w:MAP_W}; applyView(); });
+  window.addEventListener("resize", () => { if (mapBuilt) applyView(); });
+}
+function showDetail(id){
+  svg.querySelectorAll(".mk").forEach(g => g.classList.toggle("sel", g.dataset.id === id));
+  const m = MARKS[id], box = $("#map-detail");
+  if (!m){ box.innerHTML = ""; return; }
+  const q = encodeURIComponent(m.q || m.n);
+  const sub = m.sub || (m.c ? CATS[m.c][1] : "");
+  box.innerHTML = `<div class="card" style="margin-top:10px">
+    <b style="font-size:15.5px">${m.n}</b>
+    ${sub ? `<div style="font-size:12.5px;color:var(--accent);margin-top:1px">${sub}</div>` : ""}
+    <div style="font-size:14px;color:var(--dim);margin-top:6px;line-height:1.5">${m.note || m.d || ""}</div>
+    <div class="btnrow" style="margin-top:12px">
+      <a class="btn sm" target="_blank" rel="noopener" href="https://maps.apple.com/?q=${q}">⎋ Apple Maps</a>
+      <a class="btn sm ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${q}">Google Maps</a>
+    </div></div>`;
+}
+function mapLocate(id){
+  const m = MARKS[id];
+  if (!m || !m.ll) return;
+  mv.w = Math.min(mv.w, 280);
+  mv.x = mx(m.ll[1]) - mv.w/2;
+  mv.y = my(m.ll[0]) - mvh()/2;
+  applyView();
+  showDetail(id);
+  mapbox.scrollIntoView({behavior:"smooth", block:"nearest"});
+}
+function setMapDay(i){
+  mapDay = i;
+  $("#map-chips").querySelectorAll(".chip").forEach(c => c.classList.toggle("active", +c.dataset.i === i));
+  const recs = recsForDay(i);
+  svg.querySelector("#lrec").innerHTML = recs.filter(r => r.ll).map(r => {
+    const x = mx(r.ll[1]), y = my(r.ll[0]);
+    return `<g class="mk mk-rec" data-id="${r.id}"><circle class="hit" data-r="15" cx="${x}" cy="${y}"/><circle class="dot" vector-effect="non-scaling-stroke" data-r="4.5" cx="${x}" cy="${y}"/><text data-fs="9" data-cx="${x}" data-cy="${y}" data-dx="9">${r.n}</text></g>`;
+  }).join("");
+  const st = STAYS.find(s => s.nights.includes(DAYS[i].d));
+  svg.querySelector("#lring").innerHTML = st ?
+    `<circle class="ring" vector-effect="non-scaling-stroke" data-r="14" cx="${mx(st.ll[1])}" cy="${my(st.ll[0])}"/>` : "";
+  scaleUI();
+  renderRecList(i);
+}
+function renderRecList(i){
+  const day = DAYS[i], recs = recsForDay(i), box = $("#rec-list");
+  $("#rec-day-label").textContent = "Nearby · " + day.dow + " Jun " + day.d + " — " + LOCS[day.loc].name;
+  if (!recs.length){
+    box.innerHTML = `<div class="card"><p class="note" style="margin:2px 0">Travel day — no local picks. ${i === 0 ? "Sleep on the plane; the Cortina list unlocks tomorrow." : "Autogrill espresso on the A27 counts as culture."}</p></div>`;
+    return;
+  }
+  box.innerHTML = `<div class="card" style="padding:6px 16px 10px">` +
+    ["eat","see","shop","hike"].map(cat => {
+      const items = recs.filter(r => r.c === cat);
+      if (!items.length) return "";
+      return `<div class="rechead">${CATS[cat][0]} ${CATS[cat][1]}</div>` + items.map(r =>
+        `<div class="rec"><div class="tx"><b>${r.n}</b><span>${r.d}</span></div><div class="act">${r.ll ? `<button class="ib" data-loc="${r.id}" aria-label="Show on map">📍</button>` : ""}<a class="ib" target="_blank" rel="noopener" href="https://maps.apple.com/?q=${encodeURIComponent(r.q || r.n)}" aria-label="Open in Maps">↗</a></div></div>`).join("");
+    }).join("") + `</div>
+    <p class="note">Mid-June is early season — a few huts and farm kitchens only open in late June. Call before counting on dinner.</p>`;
+  box.querySelectorAll("[data-loc]").forEach(b => b.addEventListener("click", () => mapLocate(b.dataset.loc)));
+}
+function renderMapView(){
+  if (!mapBuilt){ buildMap(); mapBuilt = true; }
+  if (mapDay == null) mapDay = curDayIdx();
+  const chips = $("#map-chips");
+  chips.innerHTML = DAYS.map((d,i) => `<button class="chip" data-i="${i}">${d.dow} ${d.d}</button>`).join("");
+  chips.querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => setMapDay(+c.dataset.i)));
+  setMapDay(mapDay);
+  applyView();
+}
 
 /* ---------- init ---------- */
 renderItinerary();
